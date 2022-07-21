@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: playground
+  namespace: dev
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`playground.iot.com`)
+      services:
+        - name: playground
+          port: 80
+  tls: {}
